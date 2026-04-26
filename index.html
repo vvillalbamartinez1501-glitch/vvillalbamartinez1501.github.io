@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virginia Villalba Martínez - Portfolio Neón</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        /* Ahora Tailwind usa nuestra variable CSS dinámica en lugar de un color fijo */
+                        'neon-purple': 'var(--color-primary)',
+                        'dark-bg': '#0d0d0f',
+                    },
+                    fontFamily: {
+                        'block': ['Montserrat', 'sans-serif'],
+                        'script': ['Pinyon Script', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-dark-bg text-gray-100 font-block overflow-x-hidden min-h-screen relative custom-bg" data-theme="purple">
+
+    <div class="fixed top-6 right-6 z-50 flex gap-4 bg-black/80 p-3 rounded-full border border-gray-700 backdrop-blur-md shadow-lg">
+        <button onclick="setTheme('purple')" class="w-6 h-6 rounded-full bg-[#A020F0] shadow-[0_0_10px_#A020F0] hover:scale-110 transition duration-300" title="Neón Morado"></button>
+        <button onclick="setTheme('teal')" class="w-6 h-6 rounded-full bg-[#00f0ff] shadow-[0_0_10px_#00f0ff] hover:scale-110 transition duration-300" title="Neón Verdeazulado"></button>
+        <button onclick="setTheme('bw')" class="w-6 h-6 rounded-full bg-white border-2 border-gray-300 shadow-[0_0_10px_rgba(255,255,255,0.3)] hover:scale-110 transition duration-300" title="Sobrio B/N"></button>
+    </div>
+
+    <header id="hero-section" class="relative flex flex-col items-center justify-center h-[80vh] border-b-2 border-neon-purple/20 overflow-hidden custom-bg">
+        
+        <div class="hero-grid pointer-events-none"></div>
+
+        <canvas id="wave-canvas" class="absolute inset-0 z-0 pointer-events-none w-full h-full"></canvas>
+
+        <div id="hero-content" class="flex flex-col items-center relative z-10 w-full">
+            <div class="w-48 h-48 mb-8 relative">
+                <svg class="w-full h-full fill-none stroke-neon-purple stroke-[3px] svg-neon-drop transition-colors duration-300" viewBox="0 0 100 100" stroke-linecap="round" stroke-linejoin="round">
+                    <path class="flicker-path" d="M50,10 A40,40 0 0,1 90,50 A40,40 0 0,1 50,90 A40,40 0 0,1 10,50 A40,40 0 0,1 50,10 Z M50,50 A10,10 0 0,0 40,60 M50,50 A10,10 0 0,0 60,60"/>
+                </svg>
+            </div>
+            <div class="text-center">
+                <h1 class="text-5xl md:text-7xl font-bold uppercase text-white neon-text-white flicker-on-load transition-all duration-300">PORTFOLIO</h1>
+                <p class="text-4xl md:text-5xl font-script text-neon-purple neon-text-purple mt-2 transition-colors duration-300">Virginia Villalba Martínez  x Proyectos</p>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="max-w-6xl mx-auto my-20 p-6 md:p-10 border-2 border-neon-purple rounded-xl bg-black/50 neon-box">
+        <h2 class="text-3xl font-bold text-center text-white neon-text-white uppercase mb-8 border-b-2 border-neon-purple inline-block pb-2 relative left-1/2 -translate-x-1/2 transition-colors duration-300">Sobre Mí</h2>
+        <p class="text-lg leading-relaxed mb-4 text-center max-w-3xl mx-auto">Hola, soy Virginia. Soy estudiante del grado superior en desarrollo de aplicaciones multiplataforma, me apasionan los retos y los trabajos llamativos al público.</p>
+        <p class="text-lg leading-relaxed text-center max-w-3xl mx-auto">Mi enfoque se centra en la optimización de la experiencia de usuario y la intensidad del diseño.</p>
+    </section>
+
+    <section id="techstack" class="max-w-6xl mx-auto my-20 p-6">
+        <h2 class="text-3xl font-bold text-center text-white neon-text-white uppercase mb-12 border-b-2 border-neon-purple inline-block pb-2 relative left-1/2 -translate-x-1/2 transition-colors duration-300">Mi TechStack</h2>
+        
+        <div class="tech-wave-container grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-html5 text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">HTML5</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-css3-alt text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">CSS3</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-js-square text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">JavaScript</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-python text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">Python</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fas fa-database text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">SQL</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-java text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">Java</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-git-alt text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">Git</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-github text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">GitHub</span></div>
+        </div>
+    </section>
+
+    <section id="projects" class="max-w-6xl mx-auto my-20 p-6">
+        <h2 class="text-3xl font-bold text-center text-white neon-text-white uppercase mb-12 border-b-2 border-neon-purple inline-block pb-2 relative left-1/2 -translate-x-1/2 transition-colors duration-300">Ejemplos de Trabajo</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            
+            <div class="flex flex-col gap-4 border-2 border-neon-purple rounded-xl bg-black/50 p-8 neon-box transition-colors duration-300">
+                <h3 class="text-2xl font-bold uppercase text-white neon-text-white">Proyecto Local</h3>
+                <p class="text-gray-300 flex-grow">Esta web la realicé como aportación al Club de voleybol de mi pueblo, Navalcarnero, para así dar visibilidad a la actividad deportiva de nuestro pueblo. Este include un <strong>Frontend sólido</strong> y diseñado para agradar a los usuarios, además de la incorporación de <strong>automatizaciones con inteligencia artificial</strong> para subir como noticias individuales todas las publicaciones en la web oficial del Club.</p>
+                <div class="flex flex-wrap gap-6 mt-4">
+                    <a href="https://voley-navalcarnero.vercel.app/" target="_blank" rel="noopener" class="flex items-center gap-2 font-bold uppercase text-neon-purple neon-text-purple hover:text-white hover:neon-text-white transition duration-300">Web Live <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-4 border-2 border-neon-purple rounded-xl bg-black/50 p-8 neon-box transition-colors duration-300">
+                <h3 class="text-2xl font-bold uppercase text-white neon-text-white">Proyecto Beta</h3>
+                <p class="text-gray-300 flex-grow">Otra descripción de tu trabajo excepcional. Demuestra tu impacto y habilidades aquí.</p>
+                <div class="flex flex-wrap gap-6 mt-4">
+                    <a href="#" target="_blank" class="flex items-center gap-2 font-bold uppercase text-neon-purple neon-text-purple hover:text-white hover:neon-text-white transition duration-300">Web Live <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="aportaciones" class="max-w-4xl mx-auto my-20 p-6 md:p-10 border-2 border-neon-purple rounded-xl bg-black/50 neon-box transition-colors duration-300">
+        <h2 class="text-3xl font-bold text-center text-white neon-text-white uppercase mb-8 border-b-2 border-neon-purple inline-block pb-2 relative left-1/2 -translate-x-1/2 transition-colors duration-300">Aportaciones</h2>
+        <ul class="flex flex-col gap-4 text-lg">
+            <li class="relative pl-8 border-b border-neon-purple/30 pb-3 transition-colors duration-300">
+                <a href="https://www.linkedin.com/posts/v-villalba-mart%C3%ADnez-bb49a539a_muchas-gracias-fundaci%C3%B3n-uax-por-la-oportunidad-share-7400554242098495488-fIC9?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGII3ngB7D42AwyRX6bKg2z2HpNtF3fC9mg" rel="noopener noreferrer" class="relative block pl-8 text-white neon-text-white transition duration-300 enlace-aportacion group">
+                <span class="absolute left-0 text-neon-purple neon-text-purple transition duration-300 flecha-aportacion">→</span> (Linkedin) 1er puesto en el Hackathon UAX de emprendimiento 2025.
+                </a>
+                <a href="https://fundacion.uax.com/formacion/approach-al-emprendimiento/hackathon/hackathon-innovacion-emprendimiento-social-2025.html" rel="noopener noreferrer" class="relative block pl-8 text-white neon-text-white transition duration-300 enlace-aportacion group mt-3">
+                <span class="absolute left-0 text-neon-purple neon-text-purple transition duration-300 flecha-aportacion">→</span> (Web) 1er puesto en el Hackathon UAX de emprendimiento 2025.
+                </a>
+            </li>
+            <li class="relative pl-8 border-b border-neon-purple/30 pb-3 transition-colors duration-300">
+                <a href="https://www.uax.com/noticias/hackathon-uax-innovacion-impacto-social" rel="noopener noreferrer" class="relative block pl-8 text-white neon-text-white transition duration-300 enlace-aportacion group">
+                <span class="absolute left-0 text-neon-purple neon-text-purple transition duration-300 flecha-aportacion">→</span>  2do puesto en el Hackathon solidario UAX 2025.
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <section id="contacto" class="max-w-7xl mx-auto my-32 p-6">
+        <h2 class="text-4xl md:text-5xl font-bold text-center text-white neon-text-white uppercase mb-16 border-b-4 border-neon-purple inline-block pb-4 relative left-1/2 -translate-x-1/2 transition-colors duration-300">Ponte en Contacto</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <a href="https://www.linkedin.com/in/v-villalba-mart%C3%ADnez-bb49a539a/" target="_blank" rel="noopener noreferrer" class="contact-card flex flex-col items-center justify-center text-center p-12 border-2 border-neon-purple rounded-2xl bg-black/50 neon-box transition-all duration-300">
+                <i class="fab fa-linkedin contact-icon text-7xl text-neon-purple mb-6 transition-all duration-300"></i>
+                <h3 class="contact-title text-3xl font-bold text-white mb-2 transition-all duration-300">LinkedIn</h3>
+                <span class="text-gray-400 text-lg">Conectemos</span>
+            </a>
+            
+            <a href="https://github.com/vvillalbamartinez1501-glitch" target="_blank" rel="noopener noreferrer" class="contact-card flex flex-col items-center justify-center text-center p-12 border-2 border-neon-purple rounded-2xl bg-black/50 neon-box transition-all duration-300">
+                <i class="fab fa-github contact-icon text-7xl text-neon-purple mb-6 transition-all duration-300"></i>
+                <h3 class="contact-title text-3xl font-bold text-white mb-2 transition-all duration-300">GitHub</h3>
+                <span class="text-gray-400 text-lg">Mira mi código</span>
+            </a>
+
+            <a href="mailto:vvillalbamartinez1501@gmail.com" class="contact-card flex flex-col items-center justify-center text-center p-12 border-2 border-neon-purple rounded-2xl bg-black/50 neon-box transition-all duration-300">
+                <i class="fas fa-envelope contact-icon text-7xl text-neon-purple mb-6 transition-all duration-300"></i>
+                <h3 class="contact-title text-xs font-bold text-white mb-2 transition-all duration-300">vvillalbamartinez1501@gmail.com</h3>
+                <span class="text-gray-400 text-lg">Escríbeme</span>
+            </a>
+
+            <a href="tel:+640780007" class="contact-card flex flex-col items-center justify-center text-center p-12 border-2 border-neon-purple rounded-2xl bg-black/50 neon-box transition-all duration-300">
+                <i class="fas fa-phone-alt contact-icon text-7xl text-neon-purple mb-6 transition-all duration-300"></i>
+                <h3 class="contact-title text-3xl font-bold text-white mb-2 transition-all duration-300">Teléfono</h3>
+                <span class="text-gray-400 text-lg">Hablemos</span>
+            </a>
+            
+        </div>
+    </section>
+
+    <footer class="text-center py-10 border-t-2 border-neon-purple/20 mt-20 transition-colors duration-300">
+        <p class="text-gray-400 mb-4">&copy; 2026 Virginia Villalba Martínez. Portfolio diseñado inspirado en Ibai Llanos & Ronin FC.</p>
+    </footer>
+
+    <div id="videoModal" class="hidden fixed inset-0 z-50 bg-black/95 items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl bg-black border-2 border-neon-purple neon-box transition-colors duration-300">
+            <button class="close-modal absolute -top-12 right-0 text-4xl text-white hover:text-neon-purple hover:neon-text-purple transition">&times;</button>
+            <div class="relative pb-[56.25%] h-0 overflow-hidden">
+                <iframe id="videoIframe" class="absolute top-0 left-0 w-full h-full" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
