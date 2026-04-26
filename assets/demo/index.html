@@ -39,28 +39,25 @@
         <button onclick="setTheme('bw')" class="w-6 h-6 rounded-full bg-white border-2 border-gray-300 shadow-[0_0_10px_rgba(255,255,255,0.3)] hover:scale-110 transition duration-300" title="Modo Clásico (B/N)"></button>
     </div>
 
-    <header id="hero-section" class="relative flex items-center h-screen border-b-2 border-neon-primary/20 overflow-hidden bg-dark-bg">
+    <header id="hero-section" class="relative flex flex-col items-center justify-center h-screen border-b-2 border-neon-primary/20 overflow-hidden">
         
-        <div class="hero-grid pointer-events-none opacity-50"></div>
+        <div class="hero-grid pointer-events-none"></div>
 
-        <div class="absolute inset-y-0 right-0 z-10 flex items-end justify-end w-full h-full pointer-events-none">
-            <img src="assets/img/byviruzz.png" alt="ByViruzz" 
-                 class="h-[85vh] md:h-[95vh] object-contain object-bottom flicker-on-load opacity-90 pr-0 md:pr-10" 
-                 style="animation-delay: 0.2s; filter: drop-shadow(0 0 15px rgba(var(--color-primary-rgb), 0.3));">
+        <div class="absolute inset-0 z-20 flex justify-center items-end md:justify-end md:pr-20 pointer-events-none opacity-80 md:opacity-100">
+            <img src="assets/img/byviruzz.png" alt="ByViruzz" class="h-[80vh] md:h-[95vh] object-contain object-bottom flicker-on-load" style="animation-delay: 0.2s;">
         </div>
 
-        <div class="absolute inset-0 z-15 bg-gradient-to-r from-dark-bg via-dark-bg/80 to-transparent md:via-dark-bg/50"></div>
-        <div class="absolute inset-x-0 bottom-0 z-15 h-32 bg-gradient-to-t from-dark-bg to-transparent"></div>
+        <div class="absolute inset-0 z-25 bg-gradient-to-t from-dark-bg via-transparent to-transparent"></div>
 
-        <div id="hero-content" class="relative z-20 w-full max-w-7xl mx-auto px-6 flex flex-col items-center md:items-start text-center md:text-left justify-center h-full">
+        <div id="hero-content" class="relative z-30 w-full max-w-7xl px-6 flex flex-col items-center md:items-start text-center md:text-left h-full justify-center">
             <div class="flex items-center space-x-4 mb-4">
-                <span class="border border-neon-primary text-neon-primary neon-text-purple font-bold px-4 py-1 text-sm uppercase tracking-widest transition-colors duration-300 bg-black/50 backdrop-blur-sm rounded">Peso Semipesado</span>
+                <span class="border border-neon-primary text-neon-primary neon-text-purple font-bold px-4 py-1 text-sm uppercase tracking-widest transition-colors duration-300 bg-black/50 backdrop-blur-sm">Peso Semipesado</span>
             </div>
             
-            <h1 class="text-6xl sm:text-7xl md:text-[9rem] lg:text-[10rem] font-bebas leading-none uppercase text-white neon-text-white flicker-on-load transition-all duration-300 tracking-wider">
+            <h1 class="text-7xl md:text-[10rem] font-bebas leading-none uppercase text-white neon-text-white flicker-on-load transition-all duration-300 tracking-wider">
                 BY<span class="text-neon-primary neon-text-purple transition-colors duration-300">VIRUZZ</span>
             </h1>
-            <p class="text-xl md:text-2xl font-inter font-light text-gray-300 mt-6 tracking-wide flicker-on-load max-w-xl bg-black/40 md:bg-transparent p-4 md:p-0 rounded-lg backdrop-blur-sm md:backdrop-blur-none" style="animation-delay: 0.5s;">
+            <p class="text-2xl md:text-3xl font-inter font-light text-gray-300 mt-6 tracking-wide flicker-on-load max-w-xl bg-black/30 md:bg-transparent p-4 md:p-0 rounded" style="animation-delay: 0.5s;">
                 LA BESTIA DEL RING. CONSTANCIA Y AGRESIVIDAD INDOMABLE.
             </p>
         </div>
@@ -133,6 +130,7 @@
         <p class="text-gray-600 mt-2 text-sm font-light uppercase tracking-widest">&copy; 2026 La Velada Neón. Demo de estilo.</p>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

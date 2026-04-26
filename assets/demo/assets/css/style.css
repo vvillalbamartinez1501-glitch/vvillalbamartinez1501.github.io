@@ -1,0 +1,242 @@
+/* =========================================
+   0. SISTEMA DE TEMAS (VARIABLES DINÁMICAS)
+   ========================================= */
+
+/* TEMA POR DEFECTO: MORADO NEÓN */
+:root, body[data-theme="purple"] {
+    --color-primary: #A020F0;
+    --color-primary-rgb: 160, 32, 240;
+    
+    /* Variables de Brillo */
+    --text-shadow-primary: 0 0 4px rgba(var(--color-primary-rgb), 0.7), 0 0 10px rgba(var(--color-primary-rgb), 0.5);
+    --text-shadow-white: 0 0 3px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.6), 0 0 15px rgba(var(--color-primary-rgb), 0.4);
+    --box-shadow-main: 0 0 8px rgba(var(--color-primary-rgb), 0.3), inset 0 0 5px rgba(var(--color-primary-rgb), 0.1);
+    
+    /* Hover Effects */
+    --hover-box-shadow: 0 0 30px rgba(var(--color-primary-rgb), 0.7), inset 0 0 20px rgba(var(--color-primary-rgb), 0.3);
+    --hover-title-shadow: 0 0 4px rgba(var(--color-primary-rgb), 0.8), 0 0 12px rgba(var(--color-primary-rgb), 0.6);
+    
+    /* Keyframes (Wave Glow) */
+    --kf-glow-1: 0 0 10px #ffffff, 0 0 20px var(--color-primary);
+    --kf-glow-wave-shadow-1: 0 0 4px rgba(var(--color-primary-rgb), 0.7), 0 0 10px rgba(var(--color-primary-rgb), 0.5);
+    --kf-glow-wave-shadow-2: 0 0 3px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.6), 0 0 20px rgba(var(--color-primary-rgb), 0.8);
+}
+
+/* TEMA SECUNDARIO: VERDEAZULADO NEÓN */
+body[data-theme="teal"] {
+    --color-primary: #00f0ff; 
+    --color-primary-rgb: 0, 240, 255;
+}
+
+/* TEMA TERCIARIO: BLANCO Y NEGRO (NEÓN BLANCO) */
+body[data-theme="bw"] {
+    --color-primary: #ffffff;
+    --color-primary-rgb: 255, 255, 255;
+    
+    --text-shadow-primary: 0 0 4px rgba(255, 255, 255, 0.6), 0 0 10px rgba(255, 255, 255, 0.4);
+    --text-shadow-white: 0 0 3px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.3);
+    --box-shadow-main: 0 0 8px rgba(255, 255, 255, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.1);
+    
+    --hover-box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.2);
+    --hover-title-shadow: 0 0 4px rgba(255, 255, 255, 0.8), 0 0 12px rgba(255, 255, 255, 0.5);
+    
+    --kf-glow-1: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+    --kf-glow-wave-shadow-1: 0 0 4px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3);
+    --kf-glow-wave-shadow-2: 0 0 3px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================
+   1. FONDOS INTERACTIVOS (MOUSE TRACKING)
+   ========================================= */
+:root {
+    --mouse-x: 50vw;
+    --mouse-y: 50vh;
+}
+
+/* CUADRÍCULA TRON: Se revela donde está el ratón */
+.hero-grid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 50px 50px; /* Un poco más ancha para estilo ring */
+    background-image: 
+        linear-gradient(rgba(var(--color-primary-rgb), 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.15) 1px, transparent 1px);
+    
+    mask-image: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), black, transparent);
+    -webkit-mask-image: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), black, transparent);
+    z-index: 1;
+    transition: background-image 0.3s ease;
+}
+
+#hero-content {
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
+}
+
+/* =========================================
+   2. UTILIDADES DE NEÓN Y SOMBRAS
+   ========================================= */
+.neon-text-purple {
+    text-shadow: var(--text-shadow-primary);
+}
+
+.neon-text-white {
+    text-shadow: var(--text-shadow-white);
+}
+
+.neon-box {
+    box-shadow: var(--box-shadow-main);
+}
+
+/* =========================================
+   3. KEYFRAMES (ANIMACIONES)
+   ========================================= */
+@keyframes flicker-in {
+    0% { opacity: 0; text-shadow: none; }
+    40% { opacity: 0.1; text-shadow: none; }
+    41% { opacity: 1; text-shadow: var(--kf-glow-1); }
+    45% { opacity: 0.3; text-shadow: none; }
+    50% { opacity: 1; text-shadow: var(--kf-glow-1); }
+    100% { opacity: 1; text-shadow: var(--kf-glow-1); }
+}
+
+@keyframes wave-glow {
+    0%, 40%, 100% {
+        color: var(--color-primary);
+        text-shadow: var(--kf-glow-wave-shadow-1);
+        transform: scale(1);
+    }
+    20% { 
+        color: #ffffff;
+        text-shadow: var(--kf-glow-wave-shadow-2);
+        transform: scale(1.15);
+    }
+}
+
+/* =========================================
+   4. CLASES DE ANIMACIÓN
+   ========================================= */
+.flicker-on-load {
+    animation: flicker-in 0.8s ease-out forwards;
+}
+
+/* =========================================
+   5. COMPONENTES ESPECÍFICOS
+   ========================================= */
+
+/* Wave Glow para Stats */
+.tech-wave-container .tech-item i {
+    animation: wave-glow 4s infinite linear;
+}
+
+.tech-wave-container .tech-item:nth-child(1) i { animation-delay: 0.0s; }
+.tech-wave-container .tech-item:nth-child(2) i { animation-delay: 0.4s; }
+.tech-wave-container .tech-item:nth-child(3) i { animation-delay: 0.8s; }
+.tech-wave-container .tech-item:nth-child(4) i { animation-delay: 1.2s; }
+
+.tech-wave-container:hover .tech-item i {
+    animation-play-state: paused;
+}
+
+/* Tarjetas de Combates (Hover interactivo) */
+.contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--hover-box-shadow);
+    border-color: #ffffff; 
+}
+
+.contact-card:hover .contact-title {
+    color: var(--color-primary);
+    text-shadow: var(--hover-title-shadow);
+}
+
+/* ... Todo el sistema de TEMAS y VARIABLES se mantiene igual ... */
+
+/* =========================================
+   0. SISTEMA DE TEMAS (VARIABLES DINÁMICAS)
+   ========================================= */
+:root, body[data-theme="purple"] {
+    --color-primary: #A020F0;
+    --color-primary-rgb: 160, 32, 240;
+    --text-shadow-primary: 0 0 4px rgba(var(--color-primary-rgb), 0.7), 0 0 10px rgba(var(--color-primary-rgb), 0.5);
+    --text-shadow-white: 0 0 3px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.6), 0 0 15px rgba(var(--color-primary-rgb), 0.4);
+    --box-shadow-main: 0 0 8px rgba(var(--color-primary-rgb), 0.3), inset 0 0 5px rgba(var(--color-primary-rgb), 0.1);
+    --hover-box-shadow: 0 0 30px rgba(var(--color-primary-rgb), 0.7), inset 0 0 20px rgba(var(--color-primary-rgb), 0.3);
+    --hover-title-shadow: 0 0 4px rgba(var(--color-primary-rgb), 0.8), 0 0 12px rgba(var(--color-primary-rgb), 0.6);
+    --kf-glow-1: 0 0 10px #ffffff, 0 0 20px var(--color-primary);
+    --kf-glow-wave-shadow-1: 0 0 4px rgba(var(--color-primary-rgb), 0.7), 0 0 10px rgba(var(--color-primary-rgb), 0.5);
+    --kf-glow-wave-shadow-2: 0 0 3px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.6), 0 0 20px rgba(var(--color-primary-rgb), 0.8);
+}
+body[data-theme="teal"] {
+    --color-primary: #00f0ff; 
+    --color-primary-rgb: 0, 240, 255;
+}
+body[data-theme="bw"] {
+    --color-primary: #ffffff;
+    --color-primary-rgb: 255, 255, 255;
+    --text-shadow-primary: 0 0 4px rgba(255, 255, 255, 0.6), 0 0 10px rgba(255, 255, 255, 0.4);
+    --text-shadow-white: 0 0 3px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.3);
+    --box-shadow-main: 0 0 8px rgba(255, 255, 255, 0.2), inset 0 0 5px rgba(255, 255, 255, 0.1);
+    --hover-box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.2);
+    --hover-title-shadow: 0 0 4px rgba(255, 255, 255, 0.8), 0 0 12px rgba(255, 255, 255, 0.5);
+    --kf-glow-1: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+    --kf-glow-wave-shadow-1: 0 0 4px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3);
+    --kf-glow-wave-shadow-2: 0 0 3px rgba(255, 255, 255, 0.9), 0 0 8px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================
+   1. FONDOS INTERACTIVOS (MOUSE TRACKING) y CAPAS
+   ========================================= */
+:root {
+    --mouse-x: 50vw;
+    --mouse-y: 50vh;
+}
+
+/* Definición de Z-INDEX para las capas del Hero */
+.z-10 { z-index: 10; } /* Grid */
+.z-20 { z-index: 20; } /* Imagen */
+.z-25 { z-index: 25; } /* Gradiente oscuridad inferior */
+.z-30 { z-index: 30; } /* Texto */
+
+/* CUADRÍCULA TRON: Se revela donde está el ratón */
+.hero-grid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* Aseguramos que esté al fondo */
+    background-size: 50px 50px;
+    background-image: 
+        linear-gradient(rgba(var(--color-primary-rgb), 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.15) 1px, transparent 1px);
+    
+    mask-image: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), black, transparent);
+    -webkit-mask-image: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), black, transparent);
+    transition: background-image 0.3s ease;
+}
+
+/* Contenedor de imagen y texto para efecto 3D */
+#hero-content, .absolute.z-20 {
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
+}
+
+/* ... El resto del CSS (Utilidades Neón, Keyframes, Animaciones, Componentes) se mantiene igual ... */
+.neon-text-purple { text-shadow: var(--text-shadow-primary); }
+.neon-text-white { text-shadow: var(--text-shadow-white); }
+.neon-box { box-shadow: var(--box-shadow-main); }
+
+@keyframes flicker-in {
+    0% { opacity: 0; text-shadow: none; }
+    40% { opacity: 0.1; text-shadow: none; }
+    41% { opacity: 1; text-shadow: var(--kf-glow-1); }
+    45% { opacity: 0.3; text-shadow: none; }
+    50% { opacity: 1; text-shadow: var(--kf-glow-1); }
+    100% { opacity: 1; text-shadow: var(--kf-glow-1); }
+}
+.flicker-on-load {
+    animation: flicker-in 0.8s ease-out forwards;
+}
+/* ... Resto del CSS de Stats y Cards ... */
