@@ -3,26 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil del Boxeador | ByViruzz - La Velada Neón</title>
+    <title>Virginia Villalba Martínez - Portfolio Neón</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pinyon+Script&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'neon-primary': 'var(--color-primary)',
-                        'dark-bg': '#050505',
+                        /* Ahora Tailwind usa nuestra variable CSS dinámica en lugar de un color fijo */
+                        'neon-purple': 'var(--color-primary)',
+                        'dark-bg': '#0d0d0f',
                     },
                     fontFamily: {
-                        'bebas': ['"Bebas Neue"', 'sans-serif'],
-                        'inter': ['"Inter"', 'sans-serif']
+                        'block': ['Montserrat', 'sans-serif'],
+                        'script': ['Pinyon Script', 'cursive'],
                     }
                 }
             }
@@ -31,108 +33,154 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bg-dark-bg text-gray-100 font-inter overflow-x-hidden min-h-screen relative" data-theme="purple">
+<body class="bg-dark-bg text-gray-100 font-block overflow-x-hidden min-h-screen relative custom-bg" data-theme="purple">
 
-    <div class="fixed top-6 right-6 z-50 flex gap-4 bg-black/80 p-3 rounded-full border border-gray-800 backdrop-blur-md shadow-lg transition-colors duration-300">
-        <button onclick="setTheme('purple')" class="w-6 h-6 rounded-full bg-[#A020F0] shadow-[0_0_10px_#A020F0] hover:scale-110 transition duration-300" title="Modo Velada (Morado)"></button>
-        <button onclick="setTheme('teal')" class="w-6 h-6 rounded-full bg-[#00f0ff] shadow-[0_0_10px_#00f0ff] hover:scale-110 transition duration-300" title="Modo Entrenamiento (Verdeazulado)"></button>
-        <button onclick="setTheme('bw')" class="w-6 h-6 rounded-full bg-white border-2 border-gray-300 shadow-[0_0_10px_rgba(255,255,255,0.3)] hover:scale-110 transition duration-300" title="Modo Clásico (B/N)"></button>
+    <div class="fixed top-6 right-6 z-50 flex gap-4 bg-black/80 p-3 rounded-full border border-gray-700 backdrop-blur-md shadow-lg">
+        <button onclick="setTheme('purple')" class="w-6 h-6 rounded-full bg-[#A020F0] shadow-[0_0_10px_#A020F0] hover:scale-110 transition duration-300" title="Neón Morado"></button>
+        <button onclick="setTheme('teal')" class="w-6 h-6 rounded-full bg-[#00f0ff] shadow-[0_0_10px_#00f0ff] hover:scale-110 transition duration-300" title="Neón Verdeazulado"></button>
+        <button onclick="setTheme('bw')" class="w-6 h-6 rounded-full bg-white border-2 border-gray-300 shadow-[0_0_10px_rgba(255,255,255,0.3)] hover:scale-110 transition duration-300" title="Sobrio B/N"></button>
     </div>
 
-    <header id="hero-section" class="relative flex items-center h-screen border-b-2 border-neon-primary/20 overflow-hidden bg-dark-bg">
+    <header id="hero-section" class="relative flex flex-col items-center justify-center h-[80vh] border-b-2 border-neon-purple/20 overflow-hidden custom-bg">
         
-        <div class="hero-grid pointer-events-none opacity-50"></div>
+        <div class="hero-grid pointer-events-none"></div>
 
-        <div class="absolute inset-y-0 right-0 z-10 flex items-end justify-end w-full h-full pointer-events-none">
-            <img src="assets/img/byviruzz.png" alt="ByViruzz" 
-                 class="h-[85vh] md:h-[95vh] object-contain object-bottom flicker-on-load opacity-90 pr-0 md:pr-10" 
-                 style="animation-delay: 0.2s; filter: drop-shadow(0 0 15px rgba(var(--color-primary-rgb), 0.3));">
-        </div>
+        <canvas id="wave-canvas" class="absolute inset-0 z-0 pointer-events-none w-full h-full"></canvas>
+<div id="hero-content" class="flex flex-col items-center relative z-10 w-full">
+            <div class="w-48 h-48 mb-8 relative">
+                <svg class="w-full h-full fill-none stroke-neon-purple svg-neon-drop transition-colors duration-300" viewBox="0 0 100 100" stroke-linecap="round" stroke-linejoin="round">
+                    
+                    <circle class="flicker-path" cx="50" cy="50" r="48" stroke="var(--neon-purple)" stroke-width="3" />
+                    <circle class="flicker-path" cx="50" cy="50" r="45" stroke="var(--neon-purple)" stroke-width="1.5" />
 
-        <div class="absolute inset-0 z-15 bg-gradient-to-r from-dark-bg via-dark-bg/80 to-transparent md:via-dark-bg/50"></div>
-        <div class="absolute inset-x-0 bottom-0 z-15 h-32 bg-gradient-to-t from-dark-bg to-transparent"></div>
+                    <circle class="flicker-path" cx="35" cy="50" r="10" stroke="var(--neon-purple)" stroke-width="2" />
 
-        <div id="hero-content" class="relative z-20 w-full max-w-7xl mx-auto px-6 flex flex-col items-center md:items-start text-center md:text-left justify-center h-full">
-            <div class="flex items-center space-x-4 mb-4">
-                <span class="border border-neon-primary text-neon-primary neon-text-purple font-bold px-4 py-1 text-sm uppercase tracking-widest transition-colors duration-300 bg-black/50 backdrop-blur-sm rounded">Peso Semipesado</span>
+                    <path class="flicker-path" d="M48,65 C55,60 60,50 60,45 C60,35 50,25 40,25 C35,25 30,30 32,35 C35,45 45,55 48,65Z" stroke="var(--neon-purple)" stroke-width="1.5" />
+                    <path class="flicker-path" d="M60,45 C65,40 70,35 75,30" stroke="var(--neon-purple)" stroke-width="1.5" />
+                    <path class="flicker-path" d="M48,65 C50,70 55,75 60,80" stroke="var(--neon-purple)" stroke-width="1.5" />
+                    
+                    <circle class="flicker-path" cx="72" cy="27" r="1.5" stroke="var(--neon-purple)" stroke-width="1" />
+                    <circle class="flicker-path" cx="78" cy="33" r="1.5" stroke="var(--neon-purple)" stroke-width="1" />
+                    <circle class="flicker-path" cx="80" cy="22" r="1" stroke="var(--neon-purple)" stroke-width="1" />
+                    <circle class="flicker-path" cx="62" cy="78" r="1.5" stroke="var(--neon-purple)" stroke-width="1" />
+                    <circle class="flicker-path" cx="68" cy="82" r="1" stroke="var(--neon-purple)" stroke-width="1" />
+                </svg>
             </div>
-            
-            <h1 class="text-6xl sm:text-7xl md:text-[9rem] lg:text-[10rem] font-bebas leading-none uppercase text-white neon-text-white flicker-on-load transition-all duration-300 tracking-wider">
-                BY<span class="text-neon-primary neon-text-purple transition-colors duration-300">VIRUZZ</span>
-            </h1>
-            <p class="text-xl md:text-2xl font-inter font-light text-gray-300 mt-6 tracking-wide flicker-on-load max-w-xl bg-black/40 md:bg-transparent p-4 md:p-0 rounded-lg backdrop-blur-sm md:backdrop-blur-none" style="animation-delay: 0.5s;">
-                LA BESTIA DEL RING. CONSTANCIA Y AGRESIVIDAD INDOMABLE.
-            </p>
+            <div class="text-center">
+                <h1 class="text-5xl md:text-7xl font-bold uppercase text-white neon-text-white flicker-on-load transition-all duration-300">PORTFOLIO</h1>
+                <p class="text-4xl md:text-5xl font-script text-neon-purple neon-text-purple mt-2 transition-colors duration-300">Virginia Villalba Martínez &nbsp;x Proyectos</p>
+            </div>
         </div>
     </header>
 
-    <section class="max-w-6xl mx-auto my-20 p-6 md:p-12 border-2 border-neon-primary rounded-xl bg-black/60 backdrop-blur-sm neon-box transition-all duration-300 z-10 relative">
-        <h2 class="text-4xl font-bebas text-center text-white neon-text-white uppercase mb-8 border-b-2 border-neon-primary inline-block pb-2 relative left-1/2 -translate-x-1/2 transition-colors duration-300 tracking-widest">Biografía del Atleta</h2>
-        <div class="space-y-6 text-lg leading-relaxed text-gray-300 text-center max-w-4xl mx-auto font-light">
-            <p>Víctor Pérez, mundialmente conocido en la escena digital como <strong class="text-white neon-text-white">ByViruzz</strong>, ha trascendido la pantalla para convertirse en un verdadero atleta de contacto. Su evolución en <em>La Velada del Año</em> es puro espectáculo.</p>
-            <p>Caracterizado por un estilo de boxeo agresivo, de presión constante y una guardia férrea, Viruzz no solo destaca por su técnica, sino por un acondicionamiento físico de élite que le permite mantener un ritmo asfixiante durante todos los asaltos.</p>
-            <blockquote class="text-2xl font-bebas text-neon-primary neon-text-purple mt-8 italic tracking-wider transition-colors duration-300">
-                "En el ring no hay suscriptores. Ahí arriba solo somos dos personas y el que más ha entrenado es el que sale con el brazo en alto."
-            </blockquote>
+    <section id="about" class="max-w-6xl mx-auto my-20 p-6 md:p-10 border-2 border-neon-purple rounded-xl bg-black/50 neon-box">
+        <h2 class="text-3xl font-bold text-center text-white neon-text-white uppercase mb-8 border-b-2 border-neon-purple inline-block pb-2 relative left-1/2 -translate-x-1/2 transition-colors duration-300">Sobre Mí</h2>
+        <p class="text-lg leading-relaxed mb-4 text-center max-w-3xl mx-auto">Hola, soy Virginia. Soy estudiante del grado superior en desarrollo de aplicaciones multiplataforma, me apasionan los retos y los trabajos llamativos al público.</p>
+        <p class="text-lg leading-relaxed text-center max-w-3xl mx-auto">Mi enfoque se centra en la optimización de la experiencia de usuario y la intensidad del diseño.</p>
+    </section>
+
+    <section id="techstack" class="max-w-6xl mx-auto my-20 p-6">
+        <h2 class="text-3xl font-bold text-center text-white neon-text-white uppercase mb-12 border-b-2 border-neon-purple inline-block pb-2 relative left-1/2 -translate-x-1/2 transition-colors duration-300">Mi TechStack</h2>
+        
+        <div class="tech-wave-container grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-html5 text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">HTML5</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-css3-alt text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">CSS3</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-js-square text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">JavaScript</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-python text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">Python</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fas fa-database text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">SQL</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-java text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">Java</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-git-alt text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">Git</span></div>
+            <div class="tech-item flex flex-col items-center gap-3 group"><i class="fab fa-github text-5xl text-neon-purple transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> <span class="font-bold tracking-wide">GitHub</span></div>
         </div>
     </section>
 
-    <section class="max-w-6xl mx-auto my-20 p-6 relative z-10">
-        <h2 class="text-4xl font-bebas text-center text-white neon-text-white uppercase mb-16 border-b-2 border-neon-primary inline-block pb-2 relative left-1/2 -translate-x-1/2 transition-colors duration-300 tracking-widest">Fighter Stats</h2>
-        
-        <div class="tech-wave-container grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-            <div class="tech-item flex flex-col items-center gap-4 group">
-                <i class="fas fa-ruler-vertical text-6xl text-neon-primary transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> 
-                <span class="font-bebas text-3xl tracking-wider text-gray-200">1.82 m</span>
-                <span class="text-sm text-gray-500 uppercase tracking-widest">Altura</span>
-            </div>
-            <div class="tech-item flex flex-col items-center gap-4 group">
-                <i class="fas fa-weight-hanging text-6xl text-neon-primary transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> 
-                <span class="font-bebas text-3xl tracking-wider text-gray-200">82.5 kg</span>
-                <span class="text-sm text-gray-500 uppercase tracking-widest">Peso Oficial</span>
-            </div>
-            <div class="tech-item flex flex-col items-center gap-4 group">
-                <i class="fas fa-fist-raised text-6xl text-neon-primary transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> 
-                <span class="font-bebas text-3xl tracking-wider text-gray-200">Ortodoxa</span>
-                <span class="text-sm text-gray-500 uppercase tracking-widest">Guardia</span>
-            </div>
-            <div class="tech-item flex flex-col items-center gap-4 group">
-                <i class="fas fa-trophy text-6xl text-neon-primary transition duration-300 group-hover:scale-110 group-hover:text-white group-hover:neon-text-white"></i> 
-                <span class="font-bebas text-3xl tracking-wider text-gray-200">2 - 1 - 0</span>
-                <span class="text-sm text-gray-500 uppercase tracking-widest">Récord</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto my-32 p-6 relative z-10">
-        <h2 class="text-4xl font-bebas text-center text-white neon-text-white uppercase mb-16 border-b-2 border-neon-primary inline-block pb-2 relative left-1/2 -translate-x-1/2 transition-colors duration-300 tracking-widest">Historial de Combates</h2>
-        
+    <section id="projects" class="max-w-6xl mx-auto my-20 p-6">
+        <h2 class="text-3xl font-bold text-center text-white neon-text-white uppercase mb-12 border-b-2 border-neon-purple inline-block pb-2 relative left-1/2 -translate-x-1/2 transition-colors duration-300">Ejemplos de Trabajo</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="contact-card relative overflow-hidden flex flex-col justify-end min-h-[300px] p-8 border-2 border-neon-primary rounded-xl bg-black/80 neon-box transition-all duration-300 group cursor-pointer">
-                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1549719386-74dfc47db431?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center opacity-30 group-hover:opacity-50 transition-opacity duration-500 grayscale group-hover:grayscale-0"></div>
-                <div class="relative z-10">
-                    <h3 class="contact-title text-4xl font-bebas uppercase text-white mb-2 transition-all duration-300 tracking-wider">VS Momo</h3>
-                    <p class="text-neon-primary font-bold neon-text-purple tracking-widest uppercase transition-colors duration-300">Victoria (TKO)</p>
-                    <p class="text-gray-400 mt-2">La Velada del Año II - Pabellón Olímpico de Badalona.</p>
+            
+            <div class="flex flex-col gap-4 border-2 border-neon-purple rounded-xl bg-black/50 p-8 neon-box transition-colors duration-300">
+                <h3 class="text-2xl font-bold uppercase text-white neon-text-white">Proyecto Local</h3>
+                <p class="text-gray-300 flex-grow">Esta web la realicé como aportación al Club de voleybol de mi pueblo, Navalcarnero, para así dar visibilidad a la actividad deportiva de nuestro pueblo. Este include un <strong>Frontend sólido</strong> y diseñado para agradar a los usuarios, además de la incorporación de <strong>automatizaciones con inteligencia artificial</strong> para subir como noticias individuales todas las publicaciones en la web oficial del Club.</p>
+                <div class="flex flex-wrap gap-6 mt-4">
+                    <a href="https://voley-navalcarnero.vercel.app/" target="_blank" rel="noopener" class="flex items-center gap-2 font-bold uppercase text-neon-purple neon-text-purple hover:text-white hover:neon-text-white transition duration-300">Web Live <i class="fas fa-external-link-alt"></i></a>
                 </div>
             </div>
 
-            <div class="contact-card relative overflow-hidden flex flex-col justify-end min-h-[300px] p-8 border-2 border-neon-primary rounded-xl bg-black/80 neon-box transition-all duration-300 group cursor-pointer">
-                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1599586120429-48281b6f0ece?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center opacity-30 group-hover:opacity-50 transition-opacity duration-500 grayscale group-hover:grayscale-0"></div>
-                <div class="relative z-10">
-                    <h3 class="contact-title text-4xl font-bebas uppercase text-white mb-2 transition-all duration-300 tracking-wider">VS Shelao</h3>
-                    <p class="text-gray-300 font-bold tracking-widest uppercase">Combate Internacional</p>
-                    <p class="text-gray-400 mt-2">Misfits Boxing 007 - Wembley Arena, Londres.</p>
+            <div class="flex flex-col gap-4 border-2 border-neon-purple rounded-xl bg-black/50 p-8 neon-box transition-colors duration-300">
+                <h3 class="text-2xl font-bold uppercase text-white neon-text-white">Proyecto Beta</h3>
+                <p class="text-gray-300 flex-grow">Otra descripción de tu trabajo excepcional. Demuestra tu impacto y habilidades aquí.</p>
+                <div class="flex flex-wrap gap-6 mt-4">
+                    <a href="#" target="_blank" class="flex items-center gap-2 font-bold uppercase text-neon-purple neon-text-purple hover:text-white hover:neon-text-white transition duration-300">Web Live <i class="fas fa-external-link-alt"></i></a>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <footer class="text-center py-10 border-t-2 border-neon-primary/20 mt-20 transition-colors duration-300 relative z-10 bg-dark-bg">
-        <p class="font-bebas tracking-widest text-2xl text-gray-500">LV<span class="text-neon-primary neon-text-purple transition-colors duration-300">.INFO</span></p>
-        <p class="text-gray-600 mt-2 text-sm font-light uppercase tracking-widest">&copy; 2026 La Velada Neón. Demo de estilo.</p>
+    <section id="aportaciones" class="max-w-4xl mx-auto my-20 p-6 md:p-10 border-2 border-neon-purple rounded-xl bg-black/50 neon-box transition-colors duration-300">
+        <h2 class="text-3xl font-bold text-center text-white neon-text-white uppercase mb-8 border-b-2 border-neon-purple inline-block pb-2 relative left-1/2 -translate-x-1/2 transition-colors duration-300">Aportaciones</h2>
+        <ul class="flex flex-col gap-4 text-lg">
+            <li class="relative pl-8 border-b border-neon-purple/30 pb-3 transition-colors duration-300">
+                <a href="https://www.linkedin.com/posts/v-villalba-mart%C3%ADnez-bb49a539a_muchas-gracias-fundaci%C3%B3n-uax-por-la-oportunidad-share-7400554242098495488-fIC9?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAGII3ngB7D42AwyRX6bKg2z2HpNtF3fC9mg" rel="noopener noreferrer" class="relative block pl-8 text-white neon-text-white transition duration-300 enlace-aportacion group">
+                <span class="absolute left-0 text-neon-purple neon-text-purple transition duration-300 flecha-aportacion">→</span> (Linkedin) 1er puesto en el Hackathon UAX de emprendimiento 2025.
+                </a>
+                <a href="https://fundacion.uax.com/formacion/approach-al-emprendimiento/hackathon/hackathon-innovacion-emprendimiento-social-2025.html" rel="noopener noreferrer" class="relative block pl-8 text-white neon-text-white transition duration-300 enlace-aportacion group mt-3">
+                <span class="absolute left-0 text-neon-purple neon-text-purple transition duration-300 flecha-aportacion">→</span> (Web) 1er puesto en el Hackathon UAX de emprendimiento 2025.
+                </a>
+            </li>
+            <li class="relative pl-8 border-b border-neon-purple/30 pb-3 transition-colors duration-300">
+                <a href="https://www.uax.com/noticias/hackathon-uax-innovacion-impacto-social" rel="noopener noreferrer" class="relative block pl-8 text-white neon-text-white transition duration-300 enlace-aportacion group">
+                <span class="absolute left-0 text-neon-purple neon-text-purple transition duration-300 flecha-aportacion">→</span>  2do puesto en el Hackathon solidario UAX 2025.
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <section id="contacto" class="max-w-7xl mx-auto my-32 p-6">
+        <h2 class="text-4xl md:text-5xl font-bold text-center text-white neon-text-white uppercase mb-16 border-b-4 border-neon-purple inline-block pb-4 relative left-1/2 -translate-x-1/2 transition-colors duration-300">Ponte en Contacto</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <a href="https://www.linkedin.com/in/v-villalba-mart%C3%ADnez-bb49a539a/" target="_blank" rel="noopener noreferrer" class="contact-card flex flex-col items-center justify-center text-center p-12 border-2 border-neon-purple rounded-2xl bg-black/50 neon-box transition-all duration-300">
+                <i class="fab fa-linkedin contact-icon text-7xl text-neon-purple mb-6 transition-all duration-300"></i>
+                <h3 class="contact-title text-3xl font-bold text-white mb-2 transition-all duration-300">LinkedIn</h3>
+                <span class="text-gray-400 text-lg">Conectemos</span>
+            </a>
+            
+            <a href="https://github.com/vvillalbamartinez1501-glitch" target="_blank" rel="noopener noreferrer" class="contact-card flex flex-col items-center justify-center text-center p-12 border-2 border-neon-purple rounded-2xl bg-black/50 neon-box transition-all duration-300">
+                <i class="fab fa-github contact-icon text-7xl text-neon-purple mb-6 transition-all duration-300"></i>
+                <h3 class="contact-title text-3xl font-bold text-white mb-2 transition-all duration-300">GitHub</h3>
+                <span class="text-gray-400 text-lg">Mira mi código</span>
+            </a>
+
+            <a href="mailto:vvillalbamartinez1501@gmail.com" class="contact-card flex flex-col items-center justify-center text-center p-12 border-2 border-neon-purple rounded-2xl bg-black/50 neon-box transition-all duration-300">
+                <i class="fas fa-envelope contact-icon text-7xl text-neon-purple mb-6 transition-all duration-300"></i>
+                <h3 class="contact-title text-xs font-bold text-white mb-2 transition-all duration-300">vvillalbamartinez1501@gmail.com</h3>
+                <span class="text-gray-400 text-lg">Escríbeme</span>
+            </a>
+
+            <a href="tel:+640780007" class="contact-card flex flex-col items-center justify-center text-center p-12 border-2 border-neon-purple rounded-2xl bg-black/50 neon-box transition-all duration-300">
+                <i class="fas fa-phone-alt contact-icon text-7xl text-neon-purple mb-6 transition-all duration-300"></i>
+                <h3 class="contact-title text-3xl font-bold text-white mb-2 transition-all duration-300">Teléfono</h3>
+                <span class="text-gray-400 text-lg">Hablemos</span>
+            </a>
+            
+        </div>
+    </section>
+
+    <footer class="text-center py-10 border-t-2 border-neon-purple/20 mt-20 transition-colors duration-300">
+        <p class="text-gray-400 mb-4">&copy; 2026 Virginia Villalba Martínez. Portfolio diseñado inspirado en Ibai Llanos & Ronin FC.</p>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <div id="videoModal" class="hidden fixed inset-0 z-50 bg-black/95 items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl bg-black border-2 border-neon-purple neon-box transition-colors duration-300">
+            <button class="close-modal absolute -top-12 right-0 text-4xl text-white hover:text-neon-purple hover:neon-text-purple transition">&times;</button>
+            <div class="relative pb-[56.25%] h-0 overflow-hidden">
+                <iframe id="videoIframe" class="absolute top-0 left-0 w-full h-full" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
