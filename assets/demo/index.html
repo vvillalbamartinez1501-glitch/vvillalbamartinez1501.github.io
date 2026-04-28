@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +39,7 @@
         <button onclick="setTheme('bw')" class="w-6 h-6 rounded-full bg-white border-2 border-gray-300 shadow-[0_0_10px_rgba(255,255,255,0.3)] hover:scale-110 transition duration-300" title="Modo Clásico (B/N)"></button>
     </div>
 
-    <header id="hero-section" class="relative flex items-center h-screen border-b-2 border-neon-primary/20 overflow-hidden bg-dark-bg">
+    <header id="inicio" class="relative flex items-center h-screen border-b-2 border-neon-primary/20 overflow-hidden bg-dark-bg">
         
         <div class="hero-grid pointer-events-none opacity-50"></div>
 
@@ -132,6 +132,12 @@
         <p class="font-bebas tracking-widest text-2xl text-gray-500">LV<span class="text-neon-primary neon-text-purple transition-colors duration-300">.INFO</span></p>
         <p class="text-gray-600 mt-2 text-sm font-light uppercase tracking-widest">&copy; 2026 La Velada Neón. Demo de estilo.</p>
     </footer>
+
+    <a href="../../index.html" 
+       class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-black/80 rounded-full border-2 border-neon-primary text-neon-primary backdrop-blur-md neon-box transition-all duration-300 hover:bg-neon-primary hover:text-white hover:scale-110 group" 
+       title="Volver a Inicio">
+        <i class="fas fa-home text-2xl group-hover:-translate-y-1 transition-transform duration-300"></i>
+    </a>
 
     <script src="assets/js/main.js"></script>
 </body>
